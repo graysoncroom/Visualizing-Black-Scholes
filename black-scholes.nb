@@ -1,0 +1,390 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14173,        380]
+NotebookOptionsPosition[     13578,        362]
+NotebookOutlinePosition[     13990,        378]
+CellTagsIndexPosition[     13947,        375]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"d1", "[", 
+    RowBox[{"S_", ",", "vol_", ",", "r_", ",", "T_", ",", "c_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"r", "+", 
+         RowBox[{
+          RowBox[{"1", "/", "2"}], "*", "vol"}]}], ")"}], "*", "T"}], "+", 
+      RowBox[{"Log", "[", 
+       RowBox[{"S", "/", "c"}], "]"}]}], ")"}], "/", 
+    RowBox[{"Sqrt", "[", 
+     RowBox[{"vol", "*", "T"}], "]"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"d2", "[", 
+    RowBox[{"S_", ",", "vol_", ",", "r_", ",", "T_", ",", "c_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"d1", "[", 
+     RowBox[{"S", ",", "vol", ",", "r", ",", "T", ",", "c"}], "]"}], "-", 
+    RowBox[{"Sqrt", "[", 
+     RowBox[{"vol", "*", "T"}], "]"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"V", "[", 
+     RowBox[{"S_", ",", "vol_", ",", "r_", ",", "T_", ",", "c_"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"S", "*", 
+      RowBox[{"CDF", "[", 
+       RowBox[{
+        RowBox[{"NormalDistribution", "[", "]"}], ",", 
+        RowBox[{"d1", "[", 
+         RowBox[{"S", ",", "vol", ",", "r", ",", "T", ",", "c"}], "]"}]}], 
+       "]"}]}], "-", 
+     RowBox[{"c", "*", 
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{"-", "r"}], "*", "T"}], "]"}], "*", 
+      RowBox[{"CDF", "[", 
+       RowBox[{
+        RowBox[{"NormalDistribution", "[", "]"}], ",", 
+        RowBox[{"d2", "[", 
+         RowBox[{"S", ",", "vol", ",", "r", ",", "T", ",", "c"}], "]"}]}], 
+       "]"}]}]}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DynamicModule", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"S", "=", "100"}], ",", 
+      RowBox[{"vol", "=", "0.2"}], ",", 
+      RowBox[{"r", "=", "0.05"}], ",", 
+      RowBox[{"T", "=", "1"}], ",", 
+      RowBox[{"c", "=", "100"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Column", "[", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Dynamic", "@", 
+        RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"V", "[", 
+           RowBox[{"S", ",", "vol", ",", "r", ",", "T", ",", "c"}], "]"}], 
+          ",", 
+          RowBox[{"{", 
+           RowBox[{"S", ",", "0", ",", "140"}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"ImageSize", "->", "400"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"AxesLabel", "->", " ", 
+           RowBox[{"{", 
+            RowBox[{
+            "\"\<Stock Value S\>\"", ",", " ", "\"\<Option Value V\>\""}], 
+            "}"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{"Epilog", "->", 
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"Red", ",", 
+               RowBox[{"InfiniteLine", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"1", ",", "1"}], "}"}]}], "}"}], "]"}]}], "}"}], 
+             ",", 
+             RowBox[{"(*", 
+              RowBox[{"y", "=", "x"}], "*)"}], 
+             RowBox[{"{", 
+              RowBox[{"Blue", ",", 
+               RowBox[{"InfiniteLine", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", 
+                    RowBox[{"-", "c"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"1", ",", 
+                    RowBox[{"1", "-", "c"}]}], "}"}]}], "}"}], "]"}]}], 
+              "}"}]}], " ", 
+            RowBox[{"(*", 
+             RowBox[{"y", "=", 
+              RowBox[{"x", "-", "c"}]}], "*)"}], "\[IndentingNewLine]", 
+            "}"}]}]}], "\[IndentingNewLine]", "]"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Row", "[", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Volatility vol: \>\"", ",", 
+          RowBox[{"Slider", "[", 
+           RowBox[{
+            RowBox[{"Dynamic", "[", "vol", "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1"}], "}"}]}], "]"}], ",", "\"\< \>\"", ",", 
+          RowBox[{"Dynamic", "[", "vol", "]"}]}], "}"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Row", "[", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Interest Rate r: \>\"", ",", 
+          RowBox[{"Slider", "[", 
+           RowBox[{
+            RowBox[{"Dynamic", "[", "r", "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0.2"}], "}"}]}], "]"}], ",", "\"\< \>\"", ",",
+           " ", 
+          RowBox[{"Dynamic", "[", "r", "]"}]}], "}"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Row", "[", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Time to Maturity T: \>\"", ",", 
+          RowBox[{"Slider", "[", 
+           RowBox[{
+            RowBox[{"Dynamic", "[", "T", "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "20"}], "}"}]}], "]"}], ",", "\"\< \>\"", ",", 
+          
+          RowBox[{"Dynamic", "[", "T", "]"}]}], "}"}], "]"}], ",", 
+       RowBox[{"Row", "[", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Strike Price c: \>\"", ",", 
+          RowBox[{"Slider", "[", 
+           RowBox[{
+            RowBox[{"Dynamic", "[", "c", "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "200"}], "}"}]}], "]"}], ",", "\"\< \>\"", ",", 
+          RowBox[{"Dynamic", "[", "c", "]"}]}], "}"}], "]"}]}], 
+      "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"DynamicModule", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"S", "=", "100"}], ",", 
+     RowBox[{"vol", "=", "0.2"}], ",", 
+     RowBox[{"r", "=", "0.05"}], ",", 
+     RowBox[{"T", "=", "1"}], ",", 
+     RowBox[{"c", "=", "100"}]}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Column", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Dynamic", "@", 
+       RowBox[{"Plot3D", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"V", "[", 
+          RowBox[{"S", ",", "vol", ",", "r", ",", "T", ",", "c"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"S", ",", "0", ",", "140"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"T", ",", " ", "0.001", ",", "10"}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ImageSize", "->", "500"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"PlotRange", "->", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", " ", "Automatic"}], "}"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"MeshFunctions", "->", 
+          RowBox[{"{", 
+           RowBox[{"#2", "&"}], "}"}]}], ",", 
+         RowBox[{"(*", 
+          RowBox[{
+          "grid", " ", "lines", " ", "for", " ", "S", " ", "and", " ", "T", 
+           " ", "axes"}], "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"Mesh", "->", 
+          RowBox[{"{", "5", "}"}]}], ",", 
+         RowBox[{"(*", 
+          RowBox[{
+          "density", " ", "of", " ", "the", " ", "grid", " ", "lines"}], 
+          "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"MeshStyle", "->", 
+          RowBox[{"{", "Blue", "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"AxesLabel", "->", " ", 
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+           "\"\<Stock Value S\>\"", ",", "\[IndentingNewLine]", 
+            "\"\<Time to Maturity T\>\"", ",", " ", "\[IndentingNewLine]", 
+            "\"\<Option Value V\>\""}], "}"}]}]}], "\[IndentingNewLine]", 
+        "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Row", "[", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{"\"\<Volatility vol: \>\"", ",", 
+         RowBox[{"Slider", "[", 
+          RowBox[{
+           RowBox[{"Dynamic", "[", "vol", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "1"}], "}"}]}], "]"}], ",", 
+         "\[IndentingNewLine]", "\"\< \>\"", ",", 
+         RowBox[{"Dynamic", "[", "vol", "]"}]}], "}"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Row", "[", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{"\"\<Interest Rate r: \>\"", ",", 
+         RowBox[{"Slider", "[", 
+          RowBox[{
+           RowBox[{"Dynamic", "[", "r", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0.2"}], "}"}]}], "]"}], ",", 
+         "\[IndentingNewLine]", "\"\< \>\"", ",", " ", 
+         RowBox[{"Dynamic", "[", "r", "]"}]}], "}"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Row", "[", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{"\"\<Strike Price c: \>\"", ",", 
+         RowBox[{"Slider", "[", 
+          RowBox[{
+           RowBox[{"Dynamic", "[", "c", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "200"}], "}"}]}], "]"}], ",", 
+         "\[IndentingNewLine]", "\"\< \>\"", ",", 
+         RowBox[{"Dynamic", "[", "c", "]"}]}], "}"}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.923069569185918*^9, 
+  3.9230696147177563`*^9}},ExpressionUUID->"91704942-0976-461c-ac91-\
+0d392a0ab8d4"],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`S$$ = 100, $CellContext`vol$$ = 
+  0.2, $CellContext`r$$ = 0.05, $CellContext`T$$ = 1, $CellContext`c$$ = 100}, 
+  TagBox[GridBox[{
+     {
+      DynamicBox[ToBoxes[
+        Plot[
+         $CellContext`V[$CellContext`S$$, $CellContext`vol$$, \
+$CellContext`r$$, $CellContext`T$$, $CellContext`c$$], {$CellContext`S$$, 0, 
+          140}, ImageSize -> 400, 
+         AxesLabel -> {"Stock Value S", "Option Value V"}, Epilog -> {{Red, 
+            InfiniteLine[{{0, 0}, {1, 1}}]}, {Blue, 
+            
+            InfiniteLine[{{0, -$CellContext`c$$}, {
+              1, 1 - $CellContext`c$$}}]}}], StandardForm],
+       ImageSizeCache->{400., {105., 109.33061065274757`}}]},
+     {
+      TemplateBox[{"\"Volatility vol: \"", 
+        SliderBox[
+         Dynamic[$CellContext`vol$$], {0, 1}], "\" \"", 
+        DynamicBox[
+         ToBoxes[$CellContext`vol$$, StandardForm]]},
+       "RowDefault"]},
+     {
+      TemplateBox[{"\"Interest Rate r: \"", 
+        SliderBox[
+         Dynamic[$CellContext`r$$], {0, 0.2}], "\" \"", 
+        DynamicBox[
+         ToBoxes[$CellContext`r$$, StandardForm]]},
+       "RowDefault"]},
+     {
+      TemplateBox[{"\"Time to Maturity T: \"", 
+        SliderBox[
+         Dynamic[$CellContext`T$$], {0, 20}], "\" \"", 
+        DynamicBox[
+         ToBoxes[$CellContext`T$$, StandardForm]]},
+       "RowDefault"]},
+     {
+      TemplateBox[{"\"Strike Price c: \"", 
+        SliderBox[
+         Dynamic[$CellContext`c$$], {0, 200}], "\" \"", 
+        DynamicBox[
+         ToBoxes[$CellContext`c$$, StandardForm]]},
+       "RowDefault"]}
+    },
+    DefaultBaseStyle->"Column",
+    GridBoxAlignment->{"Columns" -> {{Left}}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+   "Column"],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{3.9230695947418327`*^9},
+ CellLabel->
+  "Out[158]=",ExpressionUUID->"7df1515e-299e-4fbd-834f-ad89080fad8e"],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`S$$ = 100, $CellContext`vol$$ = 
+  0.2, $CellContext`r$$ = 0.05, $CellContext`T$$ = 1, $CellContext`c$$ = 100}, 
+  TagBox[GridBox[{
+     {
+      DynamicBox[ToBoxes[
+        Plot3D[
+         $CellContext`V[$CellContext`S$$, $CellContext`vol$$, \
+$CellContext`r$$, $CellContext`T$$, $CellContext`c$$], {$CellContext`S$$, 0, 
+          140}, {$CellContext`T$$, 0.001, 10}, ImageSize -> 500, 
+         PlotRange -> {0, Automatic}, MeshFunctions -> {#2& }, Mesh -> {5}, 
+         MeshStyle -> {Blue}, 
+         AxesLabel -> {
+          "Stock Value S", "Time to Maturity T", "Option Value V"}], 
+        StandardForm],
+       ImageSizeCache->{500., {208., 213.24868186435748`}}]},
+     {
+      TemplateBox[{"\"Volatility vol: \"", 
+        SliderBox[
+         Dynamic[$CellContext`vol$$], {0, 1}], "\" \"", 
+        DynamicBox[
+         ToBoxes[$CellContext`vol$$, StandardForm]]},
+       "RowDefault"]},
+     {
+      TemplateBox[{"\"Interest Rate r: \"", 
+        SliderBox[
+         Dynamic[$CellContext`r$$], {0, 0.2}], "\" \"", 
+        DynamicBox[
+         ToBoxes[$CellContext`r$$, StandardForm]]},
+       "RowDefault"]},
+     {
+      TemplateBox[{"\"Strike Price c: \"", 
+        SliderBox[
+         Dynamic[$CellContext`c$$], {0, 200}], "\" \"", 
+        DynamicBox[
+         ToBoxes[$CellContext`c$$, StandardForm]]},
+       "RowDefault"]}
+    },
+    DefaultBaseStyle->"Column",
+    GridBoxAlignment->{"Columns" -> {{Left}}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+   "Column"],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{3.92306959479215*^9},
+ CellLabel->
+  "Out[159]=",ExpressionUUID->"cdd1a23b-2071-4adf-9b2a-42257938ff6c"]
+}, Open  ]]
+},
+WindowSize->{690., 387.75},
+WindowMargins->{{Automatic, 0}, {-2.125984251968589, Automatic}},
+FrontEndVersion->"13.2 for Linux x86 (64-bit) (January 31, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e71413cf-9ee8-47c9-90d3-e70582143d09"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 9293, 236, 1194, "Input",ExpressionUUID->"91704942-0976-461c-ac91-0d392a0ab8d4"],
+Cell[9876, 260, 1954, 52, 338, "Output",ExpressionUUID->"7df1515e-299e-4fbd-834f-ad89080fad8e"],
+Cell[11833, 314, 1729, 45, 519, "Output",ExpressionUUID->"cdd1a23b-2071-4adf-9b2a-42257938ff6c"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
