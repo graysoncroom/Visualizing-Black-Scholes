@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14173,        380]
-NotebookOptionsPosition[     13578,        362]
-NotebookOutlinePosition[     13990,        378]
-CellTagsIndexPosition[     13947,        375]
+NotebookDataLength[     14564,        388]
+NotebookOptionsPosition[     13985,        370]
+NotebookOutlinePosition[     14380,        386]
+CellTagsIndexPosition[     14337,        383]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -92,6 +92,10 @@ Cell[BoxData[{
            RowBox[{"S", ",", "0", ",", "140"}], "}"}], ",", 
           "\[IndentingNewLine]", 
           RowBox[{"ImageSize", "->", "400"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"PlotRange", "->", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", " ", "140"}], "}"}]}], ",", 
+          "\[IndentingNewLine]", 
           RowBox[{"AxesLabel", "->", " ", 
            RowBox[{"{", 
             RowBox[{
@@ -254,39 +258,43 @@ Cell[BoxData[{
          RowBox[{"Dynamic", "[", "c", "]"}]}], "}"}], "]"}]}], 
      "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]", 
   "]"}]}], "Input",
- CellChangeTimes->{{3.923069569185918*^9, 
-  3.9230696147177563`*^9}},ExpressionUUID->"91704942-0976-461c-ac91-\
-0d392a0ab8d4"],
+ CellChangeTimes->{{3.923069569185918*^9, 3.9230696147177563`*^9}, {
+  3.923069741746887*^9, 3.9230697620978603`*^9}},
+ CellLabel->
+  "In[160]:=",ExpressionUUID->"91704942-0976-461c-ac91-0d392a0ab8d4"],
 
 Cell[BoxData[
  DynamicModuleBox[{$CellContext`S$$ = 100, $CellContext`vol$$ = 
-  0.2, $CellContext`r$$ = 0.05, $CellContext`T$$ = 1, $CellContext`c$$ = 100}, 
+  0.422, $CellContext`r$$ = 0.1345, $CellContext`T$$ = 1, $CellContext`c$$ = 
+  100}, 
   TagBox[GridBox[{
      {
       DynamicBox[ToBoxes[
         Plot[
          $CellContext`V[$CellContext`S$$, $CellContext`vol$$, \
 $CellContext`r$$, $CellContext`T$$, $CellContext`c$$], {$CellContext`S$$, 0, 
-          140}, ImageSize -> 400, 
+          140}, ImageSize -> 400, PlotRange -> {0, 140}, 
          AxesLabel -> {"Stock Value S", "Option Value V"}, Epilog -> {{Red, 
             InfiniteLine[{{0, 0}, {1, 1}}]}, {Blue, 
             
             InfiniteLine[{{0, -$CellContext`c$$}, {
               1, 1 - $CellContext`c$$}}]}}], StandardForm],
-       ImageSizeCache->{400., {105., 109.33061065274757`}}]},
+       ImageSizeCache->{400., {110., 113.7295901607869}}]},
      {
       TemplateBox[{"\"Volatility vol: \"", 
         SliderBox[
          Dynamic[$CellContext`vol$$], {0, 1}], "\" \"", 
         DynamicBox[
-         ToBoxes[$CellContext`vol$$, StandardForm]]},
+         ToBoxes[$CellContext`vol$$, StandardForm], 
+         ImageSizeCache -> {38.203125, {1., 9.}}]},
        "RowDefault"]},
      {
       TemplateBox[{"\"Interest Rate r: \"", 
         SliderBox[
          Dynamic[$CellContext`r$$], {0, 0.2}], "\" \"", 
         DynamicBox[
-         ToBoxes[$CellContext`r$$, StandardForm]]},
+         ToBoxes[$CellContext`r$$, StandardForm], 
+         ImageSizeCache -> {45.84375, {1., 9.}}]},
        "RowDefault"]},
      {
       TemplateBox[{"\"Time to Maturity T: \"", 
@@ -308,9 +316,9 @@ $CellContext`r$$, $CellContext`T$$, $CellContext`c$$], {$CellContext`S$$, 0,
     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
    "Column"],
   DynamicModuleValues:>{}]], "Output",
- CellChangeTimes->{3.9230695947418327`*^9},
+ CellChangeTimes->{3.9230695947418327`*^9, 3.92306976390232*^9},
  CellLabel->
-  "Out[158]=",ExpressionUUID->"7df1515e-299e-4fbd-834f-ad89080fad8e"],
+  "Out[163]=",ExpressionUUID->"c06ae535-a1aa-4a8a-8b2e-c0daca35aa02"],
 
 Cell[BoxData[
  DynamicModuleBox[{$CellContext`S$$ = 100, $CellContext`vol$$ = 
@@ -355,13 +363,13 @@ $CellContext`r$$, $CellContext`T$$, $CellContext`c$$], {$CellContext`S$$, 0,
     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
    "Column"],
   DynamicModuleValues:>{}]], "Output",
- CellChangeTimes->{3.92306959479215*^9},
+ CellChangeTimes->{3.9230695947418327`*^9, 3.9230697639695177`*^9},
  CellLabel->
-  "Out[159]=",ExpressionUUID->"cdd1a23b-2071-4adf-9b2a-42257938ff6c"]
+  "Out[164]=",ExpressionUUID->"24c362c7-6e7a-4d70-a36a-ab168b42327e"]
 }, Open  ]]
 },
-WindowSize->{690., 387.75},
-WindowMargins->{{Automatic, 0}, {-2.125984251968589, Automatic}},
+WindowSize->{690., 419.25},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
 FrontEndVersion->"13.2 for Linux x86 (64-bit) (January 31, 2023)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"e71413cf-9ee8-47c9-90d3-e70582143d09"
@@ -378,13 +386,11 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 9293, 236, 1194, "Input",ExpressionUUID->"91704942-0976-461c-ac91-0d392a0ab8d4"],
-Cell[9876, 260, 1954, 52, 338, "Output",ExpressionUUID->"7df1515e-299e-4fbd-834f-ad89080fad8e"],
-Cell[11833, 314, 1729, 45, 519, "Output",ExpressionUUID->"cdd1a23b-2071-4adf-9b2a-42257938ff6c"]
+Cell[580, 22, 9523, 241, 1217, "Input",ExpressionUUID->"91704942-0976-461c-ac91-0d392a0ab8d4"],
+Cell[10106, 265, 2104, 55, 347, "Output",ExpressionUUID->"c06ae535-a1aa-4a8a-8b2e-c0daca35aa02"],
+Cell[12213, 322, 1756, 45, 542, "Output",ExpressionUUID->"24c362c7-6e7a-4d70-a36a-ab168b42327e"]
 }, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
