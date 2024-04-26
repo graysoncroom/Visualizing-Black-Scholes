@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14564,        388]
-NotebookOptionsPosition[     13985,        370]
-NotebookOutlinePosition[     14380,        386]
-CellTagsIndexPosition[     14337,        383]
+NotebookDataLength[     24354,        610]
+NotebookOptionsPosition[     23545,        588]
+NotebookOutlinePosition[     23941,        604]
+CellTagsIndexPosition[     23898,        601]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -260,13 +260,11 @@ Cell[BoxData[{
   "]"}]}], "Input",
  CellChangeTimes->{{3.923069569185918*^9, 3.9230696147177563`*^9}, {
   3.923069741746887*^9, 3.9230697620978603`*^9}},
- CellLabel->
-  "In[160]:=",ExpressionUUID->"91704942-0976-461c-ac91-0d392a0ab8d4"],
+ CellLabel->"In[11]:=",ExpressionUUID->"91704942-0976-461c-ac91-0d392a0ab8d4"],
 
 Cell[BoxData[
  DynamicModuleBox[{$CellContext`S$$ = 100, $CellContext`vol$$ = 
-  0.422, $CellContext`r$$ = 0.1345, $CellContext`T$$ = 1, $CellContext`c$$ = 
-  100}, 
+  0.2, $CellContext`r$$ = 0.05, $CellContext`T$$ = 1, $CellContext`c$$ = 100}, 
   TagBox[GridBox[{
      {
       DynamicBox[ToBoxes[
@@ -285,16 +283,14 @@ $CellContext`r$$, $CellContext`T$$, $CellContext`c$$], {$CellContext`S$$, 0,
         SliderBox[
          Dynamic[$CellContext`vol$$], {0, 1}], "\" \"", 
         DynamicBox[
-         ToBoxes[$CellContext`vol$$, StandardForm], 
-         ImageSizeCache -> {38.203125, {1., 9.}}]},
+         ToBoxes[$CellContext`vol$$, StandardForm]]},
        "RowDefault"]},
      {
       TemplateBox[{"\"Interest Rate r: \"", 
         SliderBox[
          Dynamic[$CellContext`r$$], {0, 0.2}], "\" \"", 
         DynamicBox[
-         ToBoxes[$CellContext`r$$, StandardForm], 
-         ImageSizeCache -> {45.84375, {1., 9.}}]},
+         ToBoxes[$CellContext`r$$, StandardForm]]},
        "RowDefault"]},
      {
       TemplateBox[{"\"Time to Maturity T: \"", 
@@ -316,9 +312,9 @@ $CellContext`r$$, $CellContext`T$$, $CellContext`c$$], {$CellContext`S$$, 0,
     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
    "Column"],
   DynamicModuleValues:>{}]], "Output",
- CellChangeTimes->{3.9230695947418327`*^9, 3.92306976390232*^9},
- CellLabel->
-  "Out[163]=",ExpressionUUID->"c06ae535-a1aa-4a8a-8b2e-c0daca35aa02"],
+ CellChangeTimes->{3.9230695947418327`*^9, 3.92306976390232*^9, 
+  3.9230764960081244`*^9, 3.9230766466223097`*^9, 3.923077485958452*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"3f4d437c-888c-434b-8d74-8066a5ce9f8d"],
 
 Cell[BoxData[
  DynamicModuleBox[{$CellContext`S$$ = 100, $CellContext`vol$$ = 
@@ -363,13 +359,235 @@ $CellContext`r$$, $CellContext`T$$, $CellContext`c$$], {$CellContext`S$$, 0,
     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
    "Column"],
   DynamicModuleValues:>{}]], "Output",
- CellChangeTimes->{3.9230695947418327`*^9, 3.9230697639695177`*^9},
- CellLabel->
-  "Out[164]=",ExpressionUUID->"24c362c7-6e7a-4d70-a36a-ab168b42327e"]
+ CellChangeTimes->{3.9230695947418327`*^9, 3.92306976390232*^9, 
+  3.9230764960081244`*^9, 3.9230766466223097`*^9, 3.923077486016313*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"acbfe3c2-e77c-4e0d-8349-7d718daee14f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "f", ",", "a", ",", "b", ",", "n", ",", "delta", ",", "rectangles", ",",
+        "totalArea"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"f", "[", "x_", "]"}], ":=", 
+       RowBox[{"PDF", "[", 
+        RowBox[{
+         RowBox[{"NormalDistribution", "[", "]"}], ",", "x"}], "]"}]}], ";", 
+      RowBox[{"(*", 
+       RowBox[{"normal", " ", "pdf"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"a", "=", 
+       RowBox[{"-", "3"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"b", "=", "0"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"n", "=", "numRect"}], ";", 
+      RowBox[{"(*", 
+       RowBox[{
+       "number", " ", "of", " ", "rectangles", " ", "to", " ", "fit", " ", 
+        "under", " ", "curve"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"delta", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"b", "-", "a"}], ")"}], "/", "n"}]}], ";", 
+      RowBox[{"(*", 
+       RowBox[{"rectange", " ", "width"}], "*)"}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"rectangles", "=", 
+       RowBox[{"Table", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Rectangle", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"a", "+", 
+              RowBox[{"i", "*", "delta"}]}], ",", "0"}], "}"}], ",", " ", 
+           RowBox[{"(*", 
+            RowBox[{
+             RowBox[{"minimum", " ", "x"}], ",", 
+             RowBox[{"y", " ", "values"}]}], "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"a", "+", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"i", "+", "1"}], ")"}], "*", "delta"}]}], ",", 
+             RowBox[{"f", "[", 
+              RowBox[{"a", "+", 
+               RowBox[{"i", "*", "delta"}]}], "]"}]}], "}"}]}], " ", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"max", " ", "x"}], ",", 
+            RowBox[{"y", " ", "values"}]}], "*)"}], "\[IndentingNewLine]", 
+          "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "0", ",", 
+           RowBox[{"n", "-", "1"}]}], "}"}]}], "\[IndentingNewLine]", "]"}]}],
+       ";", " ", 
+      RowBox[{"(*", 
+       RowBox[{"end", " ", "of", " ", "rectangles", " ", "table"}], "*)"}], 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+       "sum", " ", "of", " ", "the", " ", "areas", " ", "of", " ", "each", 
+        " ", "rectangle"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"totalArea", "=", 
+       RowBox[{"Total", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"f", "[", 
+            RowBox[{"a", "+", 
+             RowBox[{"#", "*", "delta"}]}], "]"}], "*", "delta"}], "&"}], "/@", 
+         RowBox[{"Range", "[", 
+          RowBox[{"0", ",", 
+           RowBox[{"n", "-", "1"}]}], "]"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Column", "[", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Plot", "[", 
+          RowBox[{
+           RowBox[{"f", "[", "x", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", 
+             RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Epilog", "->", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Opacity", "[", "0.5", "]"}], ",", "Blue", ",", 
+              "rectangles"}], "}"}]}], ",", 
+           RowBox[{"(*", 
+            RowBox[{"add", " ", "rectangles", " ", "to", " ", "graph"}], 
+            "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"PlotRange", "->", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0.42"}], "}"}]}], "}"}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"ImageSize", "->", "400"}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+           "PlotLabel", "->", 
+            "\"\<Normal Distribution with Riemann Sum\>\""}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"\"\<Total Area Approximation: \>\"", "<>", 
+            RowBox[{"ToString", "[", 
+             RowBox[{"N", "[", "totalArea", "]"}], "]"}]}], ",", "16"}], 
+          "]"}], ",", " ", 
+         RowBox[{"(*", 
+          RowBox[{"total", " ", "area", " ", "label"}], "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"Style", "[", "\"\<True Total Area: 0.5\>\"", "]"}]}], " ", 
+        RowBox[{"(*", 
+         RowBox[{"true", " ", "total", " ", "area", " ", "label"}], "*)"}], 
+        "\[IndentingNewLine]", "}"}], "]"}]}]}], " ", 
+    RowBox[{"(*", 
+     RowBox[{"end", " ", "of", " ", "column"}], "*)"}], "\[IndentingNewLine]",
+     "]"}], ",", 
+   RowBox[{"(*", 
+    RowBox[{"end", " ", "of", " ", "module"}], "*)"}], "\[IndentingNewLine]", 
+   
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"numRect", ",", "5", ",", "\"\<Number of rectangles: \>\""}], 
+      "}"}], ",", "1", ",", "200", ",", "1", ",", 
+     RowBox[{"Appearance", "->", "\"\<Labeled\>\""}]}], "}"}]}], 
+  RowBox[{"(*", 
+   RowBox[{"slider", " ", "options"}], "*)"}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.9230821132793293`*^9, 3.923082363790041*^9}, {
+   3.9230823974742937`*^9, 3.9230824579164124`*^9}, {3.923082495301697*^9, 
+   3.923082534969441*^9}, {3.923082572804502*^9, 3.9230826263773403`*^9}, 
+   3.923082683272655*^9, {3.923082807962071*^9, 3.9230828596960707`*^9}, {
+   3.923083014710067*^9, 3.923083036803936*^9}, {3.92308307506835*^9, 
+   3.9230830771329403`*^9}, {3.923083151225882*^9, 3.9230832910309258`*^9}},
+ CellLabel->"In[32]:=",ExpressionUUID->"31f538d4-1760-41b2-bf3d-f7e5fc1d2ccb"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`numRect$$ = 5, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`numRect$$], 5, "Number of rectangles: "}, 1, 200, 
+      1}}, Typeset`size$$ = {400., {159.3875, 165.0125}}, Typeset`update$$ = 
+    0, Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`numRect$$ = 5}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`f$, $CellContext`a$, $CellContext`b$, \
+$CellContext`n$, $CellContext`delta$, $CellContext`rectangles$, \
+$CellContext`totalArea$}, $CellContext`f$[
+           Pattern[$CellContext`x, 
+            Blank[]]] := PDF[
+           
+           NormalDistribution[], $CellContext`x]; $CellContext`a$ = -3; \
+$CellContext`b$ = 
+         0; $CellContext`n$ = $CellContext`numRect$$; $CellContext`delta$ = \
+($CellContext`b$ - $CellContext`a$)/$CellContext`n$; $CellContext`rectangles$ = 
+         Table[
+           
+           Rectangle[{$CellContext`a$ + $CellContext`i $CellContext`delta$, 
+             0}, {$CellContext`a$ + ($CellContext`i + 
+               1) $CellContext`delta$, 
+             $CellContext`f$[$CellContext`a$ + $CellContext`i \
+$CellContext`delta$]}], {$CellContext`i, 0, $CellContext`n$ - 
+            1}]; $CellContext`totalArea$ = Total[
+           
+           Map[$CellContext`f$[$CellContext`a$ + # $CellContext`delta$] \
+$CellContext`delta$& , 
+            Range[0, $CellContext`n$ - 1]]]; Column[{
+           Plot[
+            $CellContext`f$[$CellContext`x], {$CellContext`x, -4, 4}, Epilog -> {
+              Opacity[0.5], Blue, $CellContext`rectangles$}, 
+            PlotRange -> {{-4, 4}, {0, 0.42}}, ImageSize -> 400, PlotLabel -> 
+            "Normal Distribution with Riemann Sum"], 
+           Style["Total Area Approximation: " <> ToString[
+              N[$CellContext`totalArea$]], 16], 
+           Style["True Total Area: 0.5"]}]], 
+      "Specifications" :> {{{$CellContext`numRect$$, 5, 
+          "Number of rectangles: "}, 1, 200, 1, Appearance -> "Labeled"}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{446., {204.6875, 210.3125}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.923082120322789*^9, 3.92308258746005*^9, 3.92308263613507*^9, 
+   3.923082684281076*^9, {3.923082832674448*^9, 3.923082861336876*^9}, 
+   3.923083049711434*^9, {3.923083187903718*^9, 3.923083293609015*^9}, 
+   3.923084607469709*^9},
+ CellLabel->"Out[32]=",ExpressionUUID->"2ef9a464-2508-4ff2-9625-9540afbb2daf"]
 }, Open  ]]
 },
-WindowSize->{690., 419.25},
-WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+WindowSize->{1438.5, 808.5},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 FrontEndVersion->"13.2 for Linux x86 (64-bit) (January 31, 2023)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"e71413cf-9ee8-47c9-90d3-e70582143d09"
@@ -386,9 +604,13 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 9523, 241, 1217, "Input",ExpressionUUID->"91704942-0976-461c-ac91-0d392a0ab8d4"],
-Cell[10106, 265, 2104, 55, 347, "Output",ExpressionUUID->"c06ae535-a1aa-4a8a-8b2e-c0daca35aa02"],
-Cell[12213, 322, 1756, 45, 542, "Output",ExpressionUUID->"24c362c7-6e7a-4d70-a36a-ab168b42327e"]
+Cell[580, 22, 9519, 240, 1064, "Input",ExpressionUUID->"91704942-0976-461c-ac91-0d392a0ab8d4"],
+Cell[10102, 264, 2065, 52, 347, "Output",ExpressionUUID->"3f4d437c-888c-434b-8d74-8066a5ce9f8d"],
+Cell[12170, 318, 1822, 45, 519, "Output",ExpressionUUID->"acbfe3c2-e77c-4e0d-8349-7d718daee14f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14029, 368, 6118, 148, 684, "Input",ExpressionUUID->"31f538d4-1760-41b2-bf3d-f7e5fc1d2ccb"],
+Cell[20150, 518, 3379, 67, 457, "Output",ExpressionUUID->"2ef9a464-2508-4ff2-9625-9540afbb2daf"]
 }, Open  ]]
 }
 ]
